@@ -24,17 +24,17 @@ const GOLD_FULL = 'rgba(193,154,46,0.90)';
 
 const P = {
   // Film strip body
-  reelBg:          '#111111',
-  reelBorderColor: GOLD,
+  reelBg:          '#825c1e',
+  reelBorderColor: '#000000',
   reelBorderWidth: '3px',
 
   // Sprocket rail rows
-  railBg:          '#090909',
-  railDivider:     `1px solid ${GOLD_DIM}`,
+  railBg:          '#825c1e',
+  railDivider:     '1px solid rgba(0,0,0,0.3)',
 
-  // Sprocket holes — gold fills, dark stroke so they look punched-out
-  sprocketBg:      GOLD,
-  sprocketBorder:  '1px solid rgba(0,0,0,0.5)',
+  // Sprocket holes — black fills, bronze stroke
+  sprocketBg:      '#000000',
+  sprocketBorder:  '1px solid #825c1e',
 
   // Card
   cardBg:          '#0d0d0d',

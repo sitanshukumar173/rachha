@@ -13,6 +13,7 @@ export default {
         deepGold: '#a57b22',   // Darker shade for hover
         charcoal: '#3D3522',   // Text color 
         gbrown: '#35220e',     // Brown color
+        dgold:'#825c1e',
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'], // primary
