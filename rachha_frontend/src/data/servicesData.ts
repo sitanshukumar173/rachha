@@ -105,5 +105,45 @@ export const SERVICES_INCLUDED: ServiceIncluded[] = [
     title: "Videography",
     imageUrl:
       "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+  },{
+    id: "videography",
+    title: "Videography",
+    imageUrl:
+      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
   },
 ];
