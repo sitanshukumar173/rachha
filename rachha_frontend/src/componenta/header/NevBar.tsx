@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { EVENTS } from '../../data/eventData';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +56,7 @@ export default function Navbar() {
                 <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown ? 'rotate-180' : ''}`} />
               </button>
               <div
-                className={`absolute left-0 top-full mt-4 w-[320px] bg-pureWhite rounded-3xl shadow-2xl border border-roseMist/30 p-6 backdrop-blur-xl transition-all duration-300 origin-top ${
+                className={`absolute -left-36 top-full mt-4 w-[440px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/10 border border-roseMist/40 p-4 transition-all duration-300 origin-top ${
                   activeDropdown
                     ? 'opacity-100 visible scale-y-100'
                     : 'opacity-0 invisible scale-y-95'
@@ -63,17 +64,21 @@ export default function Navbar() {
                 onMouseEnter={() => setActiveDropdown(true)}
                 onMouseLeave={() => setActiveDropdown(false)}
               >
-                <Link
-                  to="/services/birthday-celebration"
-                  className="block rounded-2xl bg-gradient-to-br from-roseMist to-roseMist/50 px-6 py-4 hover:shadow-lg transition-all duration-300 group/item"
-                >
-                  <div className="text-sm font-serif font-semibold text-charcoal tracking-wide group-hover/item:text-royalGold transition-colors">
-                    Birthday Celebrations
-                  </div>
-                  <p className="text-xs text-charcoal/60 mt-2 font-sans font-light">
-                    Joyful celebrations tailored for you.
-                  </p>
-                </Link>
+                <div className="absolute top-0 left-6 right-6 h-[3px] bg-gradient-to-r from-royalGold/30 via-royalGold to-royalGold/30 rounded-full" />
+                <div className="grid grid-cols-2 gap-1.5 pt-3.5">
+                  {EVENTS.map((event) => (
+                    <Link
+                      key={event.slug}
+                      to={`/services/${event.slug}`}
+                      className="relative rounded-xl px-3.5 py-2.5 hover:bg-roseMist/60 transition-all duration-200 group/item overflow-hidden"
+                    >
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-0 bg-royalGold rounded-full group-hover/item:h-5 transition-all duration-200" />
+                      <div className="text-sm font-serif font-semibold text-charcoal/90 group-hover/item:text-royalGold transition-colors pl-1.5">
+                        {event.title}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
             <Link to="/" className="flex items-center justify-center">
@@ -135,14 +140,17 @@ export default function Navbar() {
                   <ChevronDown className={`w-5 h-5 transition-transform ${activeMobileDropdown ? 'rotate-180' : ''}`} />
                 </button>
                 {activeMobileDropdown && (
-                  <div className="mt-3 ml-4 space-y-2 bg-gradient-to-br from-roseMist/40 to-roseMist/20 rounded-2xl p-4">
-                    <Link
-                      to="/services/birthday-celebration"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-3 text-[14px] font-serif font-semibold text-charcoal rounded-lg hover:bg-roseMist transition-colors tracking-wide"
-                    >
-                      Birthday Celebrations
-                    </Link>
+                  <div className="mt-3 ml-4 space-y-1.5 bg-gradient-to-br from-roseMist/40 to-roseMist/20 rounded-2xl p-3">
+                    {EVENTS.map((event) => (
+                      <Link
+                        key={event.slug}
+                        to={`/services/${event.slug}`}
+                        onClick={toggleMobileMenu}
+                        className="block px-4 py-2.5 text-[14px] font-serif font-semibold text-charcoal rounded-lg hover:bg-roseMist transition-colors tracking-wide"
+                      >
+                        {event.title}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>

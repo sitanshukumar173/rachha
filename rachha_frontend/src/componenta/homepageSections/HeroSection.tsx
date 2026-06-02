@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../ui/button/Button';
 
 const videoSources = [
@@ -11,6 +12,7 @@ const videoSources = [
 ];
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const [currentVideo, setCurrentVideo] = useState(0);
   const currentSource = useMemo(() => videoSources[currentVideo], [currentVideo]);
 
@@ -80,8 +82,19 @@ export default function HeroSection() {
          
 
           <div className='mt-10 flex gap-8'>
-            <Button text='SERVICES' variant='primary' ></Button>
-            <Button text='CONTACT' variant='secondary' ></Button>
+            <Button
+              text='SERVICES'
+              variant='primary'
+              onClick={() => {
+                const el = document.getElementById('services');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
+            <Button
+              text='CONTACT'
+              variant='secondary'
+              onClick={() => navigate('/contact')}
+            />
           </div>
       </div>
     </section>

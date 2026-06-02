@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF0F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a57b22;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #FFF0F3;
+}
+
 :root {
   --color-royalGold: #D4AF37;
   --color-pureWhite: #FFFFFF;
@@ -14,6 +36,33 @@
   }
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.3), 0 0 30px rgba(212, 175, 55, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.3), 0 0 80px rgba(212, 175, 55, 0.1);
+  }
+}
+
+@keyframes fluid-gradient {
+  0% {
+    background-position: 0% 50%, 50% 0%, 100% 50%;
+  }
+  25% {
+    background-position: 50% 0%, 100% 50%, 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%, 0% 50%, 50% 100%;
+  }
+  75% {
+    background-position: 50% 100%, 50% 0%, 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%, 50% 0%, 100% 50%;
   }
 }
 
@@ -122,6 +171,11 @@
   .gold-button > span {
     position: relative;
     z-index: 10;
+  }
+
+  .glow-pulse {
+    animation: glow-pulse 2.5s ease-in-out infinite;
+    border-radius: 9999px;
   }
 }
 
