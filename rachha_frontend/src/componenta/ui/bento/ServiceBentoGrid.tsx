@@ -57,7 +57,7 @@ export function ServiceBentoGrid({
           </div>
 
           {/* Bottom Section: Image/Video Carousel under description */}
-          <div className="h-[180px] md:h-[240px] rounded-[32px] bg-gradient-to-br from-royalGold/10 to-royalGold/5 backdrop-blur-md border border-royalGold/20 overflow-hidden hover:shadow-2xl hover:shadow-royalGold/20 transition-all duration-500 group">
+          <div className="h-[260px] md:h-[340px] rounded-[32px] bg-gradient-to-br from-royalGold/10 to-royalGold/5 backdrop-blur-md border border-royalGold/20 overflow-hidden hover:shadow-2xl hover:shadow-royalGold/20 transition-all duration-500 group">
             <div className="relative w-full h-full">
               <img
                 src={mediaItems[currentMediaIndex]}

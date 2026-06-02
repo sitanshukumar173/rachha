@@ -29,7 +29,7 @@ export const SERVICES: ServiceItem[] = [
     id: "wedding",
     title: "Wedding Events",
     imageUrl:
-      "https://dst-international.com/wp-content/uploads/2025/07/Pillayar-Blessing-Mandap-Stage-For-Housewarming.jpg",
+      "https://cdn0.weddingwire.in/article/1934/original/1280/jpg/14391-wedding-party-mahima-bhatia-photography-sparkle-up-the-world.jpeg",
     description: "Your dream wedding deserves premium planning and execution.",
     path: "/services/wedding",
   },

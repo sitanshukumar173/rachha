@@ -40,7 +40,7 @@ export const Gallery_Data: GalleryData[] = [
     title: "Graduation Parties",
     description: "Mark every achievement with an unforgettable celebration.",
     imageUrl:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1599943821034-8cb5c7526922?q=80&w=759&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   // extras below cycle into the 5 slots automatically
   {
@@ -68,29 +68,29 @@ export const Gallery_Data: GalleryData[] = [
     id: "lighting",
     title: "Lighting & Sound",
     description: "Immersive audiovisual setups that captivate every guest.",
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    imageUrl:
+      "https://floodlightz.com/wp-content/uploads/2023/08/LED-Acrylic-4-800x600-3-e1691408664563.jpg",
   },
   {
     id: "photography",
     title: "Photography",
     description: "Professional captures that tell your story beautifully.",
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    imageUrl:
+      "https://cdn.prod.website-files.com/5fd2ba969b6ce08fc68b0904/64f7abc4498b85260aca7c20_cover.webp",
   },
   {
     id: "venue",
     title: "Venue Styling",
     description: "Bespoke venue transformations tailored to your vision.",
     imageUrl:
-      "https://images.unsplash.com/photo-1519225495810-7512c696505a?auto=format&fit=crop&q=80&w=800",
+      "https://cdn0.weddingwire.in/vendor/2602/3_2/1280/jpg/1000431533_15_482602-172901578684057.jpeg",
   },
   {
     id: "concert",
     title: "Live Concerts",
     description: "Electrifying live music events tailored for any crowd.",
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    imageUrl:
+      "https://i0.wp.com/musically.com/wp-content/uploads/2025/07/Maroon-5-at-Mahalaxmi-Racecourse_BookMyShow-Live.jpg?fit=1280%2C853&ssl=1",
   },
   {
     id: "gala",
@@ -104,13 +104,13 @@ export const Gallery_Data: GalleryData[] = [
     title: "Baby Showers",
     description: "Sweet celebrations welcoming the newest arrival.",
     imageUrl:
-      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&q=80&w=800",
+      "https://www.saneventhall.com/wp-content/uploads/2026/04/baby-shower-hall-1024x819.png",
   },
   {
     id: "fashion",
     title: "Fashion Shows",
     description: "Runway-ready productions from concept to curtain call.",
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    imageUrl:
+      "https://cdn.thevoiceoffashion.com/article_images/66aa20b3a5d9f-icwttb.jpg",
   },
 ];
