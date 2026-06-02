@@ -9,7 +9,7 @@ interface ServiceFeatureReelProps {
 
 const TILE = 8;
 
-const ROSE_MIST = '#fdf0f0';
+const ROSE_MIST = '#FFF0F3';
 const GOLD_1    = '#aa771c';
 const GOLD_2    = '#bf953f';
 const GOLD_3    = '#d4af37';
@@ -37,85 +37,9 @@ const RAIL_GRADIENT = `linear-gradient(
   #5a3a08 100%
 )`;
 
-// ─── FadeEdge ─────────────────────────────────────────────────────────────────
-// Two-layer approach:
-//   Layer 1 — colour fade: a single div with a gradient background that goes
-//             from solid roseMist (at the screen edge) to transparent (inward).
-//   Layer 2 — blur fade: multiple divs each fully blurred, but each one masked
-//             with a gradient so only its "slice" of the fade zone is visible.
-//             Together they sum to: heavy blur at edge → zero blur at centre.
-//
-// Both layers are absolutely positioned over the same area, no flex banding.
 
-function FadeEdge({ side }: { side: 'left' | 'right' }) {
-  // Colour gradient direction
-  const colorDir = side === 'left' ? 'to right' : 'to left';
 
-  // For mask-image: each blur slice needs a mask that shows it only in its zone.
-  // "from" and "to" are percentages of the fade-width div (0% = screen edge, 100% = inner edge).
-  // We use 4 blur layers: outermost gets blur(10px), next blur(7px), then blur(4px), then blur(2px).
-  const blurLayers: { blur: number; from: number; to: number }[] = [
-    { blur: 10, from:  0, to: 30 },
-    { blur:  7, from: 15, to: 55 },
-    { blur:  4, from: 40, to: 75 },
-    { blur:  2, from: 62, to: 90 },
-  ];
-
-  // For mask gradient: each layer should be visible in its zone and fade out at edges.
-  // mask goes: transparent → opaque → transparent, centred on the layer's zone.
-  // Direction: same as colorDir so the mask reads from screen-edge side.
-  const maskDir = colorDir;
-
-  return (
-    <div style={{
-      position: 'absolute',
-      top: 0, bottom: 0,
-      [side]: 0,
-      width: 'clamp(160px, 18vw, 240px)',
-      zIndex: 30,
-      pointerEvents: 'none',
-    }}>
-      {/* Layer 1 — colour fade overlay */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: `linear-gradient(${colorDir},
-          rgba(253,240,240,1.00)  0%,
-          rgba(253,240,240,0.90) 15%,
-          rgba(253,240,240,0.68) 32%,
-          rgba(253,240,240,0.42) 52%,
-          rgba(253,240,240,0.18) 72%,
-          rgba(253,240,240,0.04) 88%,
-          rgba(253,240,240,0.00) 100%
-        )`,
-      }} />
-
-      {/* Layer 2 — blur layers, each masked to its zone */}
-      {blurLayers.map(({ blur, from, to }, i) => {
-        // Mask: transparent at 0%, opaque between from%→to%, transparent at 100%
-        // This means the blur is only "visible" (unmasked) in that zone.
-        const mask = `linear-gradient(${maskDir},
-          transparent ${from}%,
-          rgba(0,0,0,1) ${Math.round((from + to) / 2)}%,
-          transparent ${to}%
-        )`;
-        return (
-          <div
-            key={i}
-            style={{
-              position: 'absolute', inset: 0,
-              backdropFilter: `blur(${blur}px)`,
-              WebkitBackdropFilter: `blur(${blur}px)`,
-              maskImage: mask,
-              WebkitMaskImage: mask,
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
-// ─── ServiceCard ──────────────────────────────────────────────────────────────
+// ServiceCard 
 function ServiceCard({
   item, onClick, isService = true,
 }: {
@@ -176,7 +100,7 @@ function ServiceCard({
   );
 }
 
-// ─── SprocketRow ──────────────────────────────────────────────────────────────
+// SprocketRow 
 function SprocketRow({ direction, pos }: { direction: 'L' | 'R'; pos: 'top' | 'bottom' }) {
   const cls = direction === 'L' ? 'sfr-sp-l' : 'sfr-sp-r';
   const holes = Array.from({ length: 32 * TILE });
@@ -201,7 +125,7 @@ function SprocketRow({ direction, pos }: { direction: 'L' | 'R'; pos: 'top' | 'b
   );
 }
 
-// ─── ReelStrip ────────────────────────────────────────────────────────────────
+//ReelStrip 
 function ReelStrip({
   items, direction, isService = true, onServiceClick, animClass,
 }: {
@@ -256,7 +180,7 @@ function ReelStrip({
   );
 }
 
-// ─── Divider ──────────────────────────────────────────────────────────────────
+//  Divider 
 function ReelDivider() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, padding: '14px 0' }}>
@@ -273,7 +197,7 @@ function ReelDivider() {
   );
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+//  Main
 export default function ServiceFeatureReel({ topItems, bottomItems }: ServiceFeatureReelProps) {
   const navigate = useNavigate();
   const handleServiceClick = (item: ServiceItem) => { if (item.path) navigate(item.path); };
@@ -320,9 +244,11 @@ export default function ServiceFeatureReel({ topItems, bottomItems }: ServiceFea
           </h2>
         </div>
 
-        <div style={{ position: 'relative' }} className="sfr-reel-wrap">
-          <FadeEdge side="left" />
-          <FadeEdge side="right" />
+        <div style={{
+          position: 'relative',
+          maskImage: 'linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)',
+        }} className="sfr-reel-wrap">
           <ReelStrip items={topItems} direction="L" isService onServiceClick={handleServiceClick} animClass="sfr-top" />
           <ReelDivider />
           <ReelStrip items={bottomItems} direction="R" isService={false} animClass="sfr-bot" />

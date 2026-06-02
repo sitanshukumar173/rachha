@@ -20,7 +20,7 @@ export const SERVICES: ServiceItem[] = [
     id: "birthday-celebration",
     title: "Birthday Celebration",
     imageUrl:
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&q=80",
+      "https://borntoparty.in/img/what-we-do/birthday-event-planner.jpg",
     description:
       "Create unforgettable birthday moments with our premium celebration packages.",
     path: "/services/birthday-celebration",
@@ -29,36 +29,41 @@ export const SERVICES: ServiceItem[] = [
     id: "wedding",
     title: "Wedding Events",
     imageUrl:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80",
+      "https://dst-international.com/wp-content/uploads/2025/07/Pillayar-Blessing-Mandap-Stage-For-Housewarming.jpg",
     description: "Your dream wedding deserves premium planning and execution.",
+    path: "/services/wedding",
   },
   {
     id: "corporate",
     title: "Corporate Events",
     imageUrl:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80",
+      "https://belvederebanquets.com/wp-content/uploads/2021/11/business-conference.jpg",
     description: "Professional events that leave lasting impressions.",
+    path: "/services/corporate-events",
   },
   {
     id: "anniversary",
     title: "Anniversary Celebrations",
     imageUrl:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&q=80",
+      "https://maisondecinq.com/wp-content/uploads/2021/01/ValentineTableforTwo7-768x1024.jpg",
     description: "Celebrate your milestones in style.",
+    path: "/services/anniversary",
   },
   {
     id: "graduation",
     title: "Graduation Parties",
     imageUrl:
-      "https://images.unsplash.com/photo-1540575467063-178cb50cb2cd?w=500&q=80",
+      "https://balloonsbytommy.com/menus/graduation/metallicbackdrop.webp",
     description: "Mark this achievement with an unforgettable celebration.",
+    path: "/services/college-events",
   },
   {
     id: "engagement",
     title: "Engagement Parties",
     imageUrl:
-      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500&q=80",
+      "https://weddingservices.co.in/wsimages/1672469272_3e5194f69af7d2de508c76771f5a7959.jpg",
     description: "Start your journey with a magical engagement celebration.",
+    path: "/services/engagement",
   },
 ];
 
@@ -68,37 +73,37 @@ export const SERVICES_INCLUDED: ServiceIncluded[] = [
     id: "decoration",
     title: "Decoration",
     imageUrl:
-      "https://images.unsplash.com/photo-1519167758481-dc53e14e1dda?w=500&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=600",
   },
   {
     id: "catering",
     title: "Catering",
     imageUrl:
-      "https://images.unsplash.com/photo-1555939594-58d7cb561404?w=500&q=80",
+      "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=600",
   },
   {
     id: "photography",
     title: "Photography",
     imageUrl:
-      "https://images.unsplash.com/photo-1502764613149-7f3d7be0766d?w=500&q=80",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=600",
   },
   {
     id: "videography",
     title: "Videography",
     imageUrl:
-      "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=500&q=80",
+      "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&q=80&w=600",
   },
   {
     id: "entertainment",
     title: "Entertainment",
     imageUrl:
-      "https://images.unsplash.com/photo-1516924962622-92b6c5a2b908?w=500&q=80",
+      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=600",
   },
   {
     id: "lighting",
     title: "Lighting Design",
     imageUrl:
-      "https://images.unsplash.com/photo-1514306688772-3eb71bcdd275?w=500&q=80",
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=600",
   },
   {
     id: "videography",

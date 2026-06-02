@@ -1,6 +1,9 @@
 import HeroSection from '../homepageSections/HeroSection';
 import HomePageServiceFeature from '../homepageSections/HomePageServiceFeature';
 import AboutSection from '../homepageSections/AboutSection';
+import HomePageGalleryFeature from '../homepageSections/GalleryFeatureSection';
+import TestonomialSection from '../homepageSections/TestonomialSection';
+import ContactSection from '../homepageSections/ContactSection';
 
 const Homepage = () => {
 
@@ -10,6 +13,9 @@ const Homepage = () => {
       <HeroSection />
       <AboutSection />
       <HomePageServiceFeature />
+      <HomePageGalleryFeature/>
+      <TestonomialSection/>
+      <ContactSection/>
     </main>
   );
 };
