@@ -1,6 +1,83 @@
 import { useRef, useState } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle, XCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import Button from "../button/Button";
+
+// const EMAILJS_SERVICE_ID = "service_2yojg4q";
+const EMAILJS_SERVICE_ID = "service_5smhwex";
+
+
+// const EMAILJS_TEMPLATE_ID = "template_cpf907g";
+const EMAILJS_TEMPLATE_ID = "template_1jvhkxh";
+// const EMAILJS_PUBLIC_KEY = "Y8FkaihrMzE-Si5A8";
+const EMAILJS_PUBLIC_KEY = "LsOIkjRxV0OqDTEUI";
+
+const GOOGLE_SHEETS_URL =
+  "https://script.google.com/macros/s/AKfycbwUfpTR0KDSDyiLA5r57W8WT4eyHKjH3szzDXa-J5E8WvWCGhIt8vgCWyA7lAaWOHw0/exec";
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+interface SubmitResult {
+  success: boolean;
+  message: string;
+}
+
+async function submitToEmailJS(data: ContactFormData): Promise<SubmitResult> {
+  const result = await emailjs.send(
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,
+    {
+      title: "Contact Form",
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      message: data.message,
+    },
+    EMAILJS_PUBLIC_KEY
+  );
+
+  if (result.status === 200) {
+    return { success: true, message: "Your message has been sent successfully!" };
+  }
+  throw new Error("Failed to send email");
+}
+
+function submitToGoogleSheets(data: ContactFormData): void {
+  const formData = new FormData();
+  formData.append("name", data.name);
+  formData.append("email", data.email);
+  formData.append("phone", data.phone);
+  formData.append("message", data.message);
+
+  fetch(GOOGLE_SHEETS_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData,
+  }).catch(() => {});
+}
+
+async function submitContactForm(
+  data: ContactFormData
+): Promise<SubmitResult> {
+  try {
+    const result = await submitToEmailJS(data);
+    submitToGoogleSheets(data);
+    return result;
+  } catch (error) {
+    return {
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+    };
+  }
+}
 
 interface FormData {
   name: string;
@@ -17,6 +94,11 @@ export default function ContactBento() {
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const updateField =
     (field: keyof FormData) =>
@@ -24,9 +106,21 @@ export default function ContactBento() {
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", form);
+    setIsSubmitting(true);
+    setResult(null);
+
+    const res = await submitContactForm(form);
+
+    if (res.success) {
+      setResult({ type: "success", message: res.message });
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } else {
+      setResult({ type: "error", message: res.message });
+    }
+
+    setIsSubmitting(false);
   };
 
   const handleButtonClick = () => {
@@ -87,11 +181,29 @@ export default function ContactBento() {
 
           <div className="mt-2">
             <Button
-              text="SEND MESSAGE"
+              text={isSubmitting ? "SENDING..." : "SEND MESSAGE"}
               variant="primary"
               onClick={handleButtonClick}
+              disabled={isSubmitting}
             />
           </div>
+
+          {result && (
+            <div
+              className={`flex items-center gap-2 mt-3 text-sm font-sans ${
+                result.type === "success"
+                  ? "text-green-400"
+                  : "text-roseMist"
+              }`}
+            >
+              {result.type === "success" ? (
+                <CheckCircle className="w-4 h-4 shrink-0" />
+              ) : (
+                <XCircle className="w-4 h-4 shrink-0" />
+              )}
+              <span>{result.message}</span>
+            </div>
+          )}
         </form>
       </div>
 
